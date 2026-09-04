@@ -8,6 +8,8 @@ Python interface for Talsim datasets, databases, scenarios, simulation runs and 
 pip install talsimpy
 ```
 
+Optional extras: `pip install talsimpy[plot]` (plotting) or `talsimpy[raster]` (xarray/rioxarray).
+
 ## Features
 
 * `TalsimDataset` – read and edit Talsim ASCII datasets

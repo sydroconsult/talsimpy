@@ -6,10 +6,16 @@
 talsimpy documentation
 ======================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+Python interface for Talsim datasets, databases, scenarios, simulation runs
+and time series processing.
 
+Install with:
+
+.. code-block:: bash
+
+   pip install talsimpy
+
+Optional extras: ``pip install talsimpy[plot]`` (plotting) or ``talsimpy[raster]`` (xarray/rioxarray).
 
 .. toctree::
    :maxdepth: 2
