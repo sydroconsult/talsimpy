@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "talsimpy"
 dynamic = ["version"]
-description = "Python interface for Talsim4 datasets, Talsim5 databases"
+description = "Python interface for Talsim datasets, databases, scenarios, simulation runs and time series processing."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { file = "LICENSE" }
@@ -32,6 +32,7 @@ docs = ["sphinx"]
 
 [project.urls]
 Homepage = "https://github.com/sydroconsult/talsimpy"
+Documentation = "https://sydroconsult.github.io/talsimpy/"
 Changelog = "https://github.com/sydroconsult/talsimpy/blob/main/CHANGELOG.md"
 
 [tool.hatch.version]

@@ -2,6 +2,8 @@
 
 Python interface for Talsim datasets, databases, scenarios, simulation runs and time series processing.
 
+[Documentation](https://sydroconsult.github.io/talsimpy/)
+
 ## Installation
 
 ```bash
