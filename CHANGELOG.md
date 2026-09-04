@@ -3,8 +3,7 @@
 Version 3.0.0a1
 ----------------
 CHANGED:
-* Package renamed from `pytalsim` to `talsimpy` (the `pytalsim` name is no longer available on PyPI); import as `import talsimpy` instead of `import pytalsim`
-* First release under the new name, published as an alpha to reflect that the accompanying test suite and example notebooks are still being ported over
+* First release under the new name "talsimpy"
 
 Version 2.1.3
 -------------
