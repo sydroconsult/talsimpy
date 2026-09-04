@@ -1,0 +1,3 @@
+*Demo template file for TalsimDataset.process_templates()
+variable_name={variable_name}
+other_variable={other_variable:>8}

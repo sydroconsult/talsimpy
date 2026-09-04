@@ -1,0 +1,69 @@
+*Systemlogik (*.SYS)
+*===================
+[SETTINGS]
+VERSION=1.1
+*|-------------------------------|----------------|----------------|---|---|-------|-------|-|-|-|
+*|       S  y  s  t  e  m        |    Inflow      |      Outflow   |WEL|BIL|   X   |   Y   |O|S|E|Full description
+*|    Description         | Key  |  1    2    3   |  1    2    3   |   |   |       |       | | | |
+*|<--------------------->-|-<-->-|-<-->-<-->-<-->-|-<-->-<-->-<-->-|-+-|-+-|<----->|<----->|+|+|+|
+ | Sub-basin              | A001 |                | S002           | J | J |27000.0|  500.0|1|0|J|Sub-basin
+ | Sub-basin              | A003 |                | S002           | J | J |28000.0| 1500.0|3|0|J|Sub-basin
+ | Water transport        | S002 |                | S003           | J | J |26500.0| 2500.0|1|0|J|Water transport
+ | Sub-basin              | A004 |                | S003           | J | J |27500.0| 2500.0|3|0|J|Sub-basin
+ | Sub-basin              | A006 |                | S003           | J | J |25000.0| 2500.0|1|0|J|Sub-basin
+ | Sub-basin              | A002 |                | S001           | J | J |25500.0|  500.0|1|0|J|Sub-basin
+ | Sub-basin              | A005 |                | S001           | J | J |24500.0| 1000.0|2|0|J|Sub-basin
+ | Water transport        | S001 |                | S003           | J | J |25500.0| 2500.0|1|0|J|Water transport
+ | Water transport        | S003 |                | S004           | J | J |26000.0| 4000.0|3|0|J|Water transport
+ | Sub-basin              | A007 |                | S004           | J | J |25000.0| 4000.0|1|0|J|Sub-basin
+ | Sub-basin              | A008 |                | S004           | J | J |24500.0| 4500.0|1|0|J|Sub-basin
+ | Water transport        | S004 |                | S005           | J | J |25500.0| 6000.0|1|0|J|Water transport
+ | Sub-basin              | A009 |                | S005           | J | J |27000.0| 6500.0|3|0|J|Sub-basin
+ | Sub-basin              | A010 |                | S005           | J | J |26500.0| 6000.0|1|0|J|Sub-basin
+ | Water transport        | S005 |                | S006           | J | J |26000.0| 7500.0|1|0|J|Water transport
+ | Sub-basin              | A015 |                | S006           | J | J |24500.0| 8000.0|1|0|J|Sub-basin
+ | Sub-basin              | A016 |                | S006           | J | J |27000.0| 7500.0|1|0|J|Sub-basin
+ | Water transport        | S006 |                | S007           | J | J |24500.0| 9000.0|1|0|J|Water transport
+ | Sub-basin              | A017 |                | S007           | J | J |24000.0| 9000.0|1|0|J|Sub-basin
+ | Sub-basin              | A018 |                | S007           | J | J |26000.0|10000.0|3|0|J|Sub-basin
+ | Water transport        | S007 |                | S008           | J | J |24500.0|10500.0|1|0|J|Water transport
+ | Sub-basin              | A020 |                | S008           | J | J |24000.0|10500.0|1|0|J|Sub-basin
+ | Sub-basin              | A021 |                | S008           | J | J |25500.0|11000.0|3|0|J|Sub-basin
+ | Water transport        | S008 |                | S011           | J | J |23000.0|12000.0|3|0|J|Water transport
+ | Sub-basin              | A011 |                | S009           | J | J |23000.0| 5000.0|1|0|J|Sub-basin
+ | Sub-basin              | A013 |                | S009           | J | J |24000.0| 6000.0|3|0|J|Sub-basin
+ | Water transport        | S009 |                | S010           | J | J |22500.0| 6500.0|1|0|J|Water transport
+ | Sub-basin              | A012 |                | S010           | J | J |22000.0| 7000.0|2|0|J|Sub-basin
+ | Sub-basin              | A014 |                | S010           | J | J |23500.0| 6500.0|1|0|J|Sub-basin
+ | Water transport        | S010 |                | S011           | J | J |23500.0| 8000.0|1|0|J|Water transport
+ | Sub-basin              | A019 |                | S011           | J | J |23000.0| 8000.0|1|0|J|Sub-basin
+ | Sub-basin              | A022 |                | S011           | J | J |24500.0|12000.0|3|0|J|Sub-basin
+ | Water transport        | S011 |                | S013           | J | J |22000.0|13500.0|1|0|J|Water transport
+ | Sub-basin              | A023 |                | S012           | J | J |26000.0|12500.0|1|0|J|Sub-basin
+ | Sub-basin              | A024 |                | S012           | J | J |25000.0|13500.0|3|0|J|Sub-basin
+ | Water transport        | S012 |                | S013           | J | J |23500.0|13500.0|1|0|J|Water transport
+ | Sub-basin              | A025 |                | S013           | J | J |23000.0|13500.0|3|0|J|Sub-basin
+ | Sub-basin              | A026 |                | S013           | J | J |21500.0|13500.0|1|0|J|Sub-basin
+ | Water transport        | S013 |                | S014           | J | J |21500.0|15000.0|3|0|J|Water transport
+ | Sub-basin              | A027 |                | S014           | J | J |22000.0|15500.0|3|0|J|Sub-basin
+ | Sub-basin              | A028 |                | S014           | J | J |20500.0|15000.0|1|0|J|Sub-basin
+ | Water transport        | S014 |                | S015           | J | J |20000.0|16000.0|3|0|J|Water transport
+ | Sub-basin              | A029 |                | S015           | J | J |20000.0|17000.0|3|0|J|Sub-basin
+ | Sub-basin              | A038 |                | S015           | J | J |19500.0|17500.0|4|0|J|Sub-basin
+ | Water transport        | S015 |                | S017           | J | J |19000.0|15500.0|3|0|J|Water transport
+ | Sub-basin              | A036 |                | S017           | J | J |19000.0|16500.0|3|0|J|Sub-basin
+ | Sub-basin              | A037 |                | S017           | J | J |18000.0|17500.0|4|0|J|Sub-basin
+ | Water transport        | S017 |                | S018           | J | J |17500.0|16500.0|4|0|J|Water transport
+ | Sub-basin              | A030 |                | S016           | J | J |18500.0|14000.0|1|0|J|Sub-basin
+ | Sub-basin              | A031 |                | S016           | J | J |17000.0|14500.0|1|0|J|Sub-basin
+ | Water transport        | S016 |                | S018           | J | J |17500.0|15000.0|1|0|J|Water transport
+ | Sub-basin              | A034 |                | S018           | J | J |18500.0|15000.0|1|0|J|Sub-basin
+ | Sub-basin              | A035 |                | S018           | J | J |17000.0|16500.0|4|0|J|Sub-basin
+ | Water transport        | S018 |                | S019           | J | J |16000.0|15500.0|3|0|J|Water transport
+ | Sub-basin              | A032 |                | S019           | J | J |15000.0|14500.0|1|0|J|Sub-basin
+ | Sub-basin              | A033 |                | S019           | J | J |16000.0|16500.0|3|0|J|Sub-basin
+ | Water transport        | S019 |                | S020           | J | J |14500.0|15500.0|3|0|J|Water transport
+ | Sub-basin              | A039 |                | S020           | J | J |14500.0|16500.0|3|0|J|Sub-basin
+ | Water transport        | S020 |                | ZPG            | J | J |13500.0|15500.0|3|0|J|Water transport
+ | ZIELPEGEL              | ZPG  |                |                | J | J |12500.0|15500.0|3|0|J|ZIELPEGEL
+*|-------------------------------|----------------|----------------|---|---|-------|-------|-|-|-|
