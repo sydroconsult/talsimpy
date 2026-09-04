@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "talsimpy"
+dynamic = ["version"]
+description = "Python interface for Talsim4 datasets, Talsim5 databases"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name = "SYDRO Consult GmbH", email = "mail@sydro.de" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Other/Proprietary License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy",
+    "pandas",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib"]
+raster = ["xarray", "rioxarray"]
+
+[dependency-groups]
+test = ["pytest"]
+docs = ["sphinx"]
+
+[project.urls]
+Homepage = "https://github.com/sydroconsult/talsimpy"
+Changelog = "https://github.com/sydroconsult/talsimpy/blob/main/CHANGELOG.md"
+
+[tool.hatch.version]
+path = "src/talsimpy/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/talsimpy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

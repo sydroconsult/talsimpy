@@ -1,0 +1,42 @@
+Copyright (c) 2026 SYDRO Consult GmbH
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software (the "Software"), to use the Software for any
+purpose, including commercial purposes, in particular for preparing,
+transforming, or manipulating data intended for use with the
+proprietary Talsim software, subject to the following conditions:
+
+1. Modification. The Software may not be modified, and no derivative
+   works may be created based on the Software, in whole or in part.
+
+2. No incorporation into other products. The Software's source code,
+   in whole or in part, may not be extracted, embedded, repackaged, or
+   otherwise incorporated into any other software product or service
+   that you distribute, sell, or otherwise make available to third
+   parties, whether offered commercially or free of charge. For the
+   avoidance of doubt, this condition does not restrict using the
+   Software as an unmodified dependency of your own scripts,
+   applications, or internal tools (for example, via a Python `import`
+   statement) for your own purposes, including preparing data for use
+   with the Talsim software; such use is expressly permitted under
+   these terms.
+
+3. Redistribution. The Software may not be redistributed, sublicensed,
+   or otherwise made available to third parties, except in unmodified
+   form via the official distribution channel
+   (https://pypi.org/project/pytalsim/).
+
+4. Notice. The above copyright notice and this permission notice shall
+   be included, unmodified, in all copies of the Software.
+
+5. Termination. This license terminates automatically if you breach
+   any of the conditions above. Upon termination, you must cease all
+   use of the Software and destroy all copies in your possession.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
