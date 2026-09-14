@@ -1,4 +1,10 @@
-# talsim package
+# talsimpy
+
+Version 3.0.0
+-------------
+CHANGED:
+* First stable release of talsimpy
+* Updated notebook examples and update of documentation
 
 Version 3.0.0a1
 ----------------

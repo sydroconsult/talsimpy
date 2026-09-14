@@ -15,7 +15,7 @@ This package contains the following classes:
 * `Timeseries` for handling and manipulating time series
 """
 
-__version__ = "3.0.0a1"
+__version__ = "3.0.0"
 
 from .talsimdatabase import TalsimDatabase
 from .talsimdataset import TalsimDataset
