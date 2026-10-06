@@ -208,7 +208,9 @@ class Timeseries():
     @property
     def start(self) -> datetime.datetime:
         """
-        :returns: the time series start date or None if the time series is empty
+        Returns the time series start date
+
+        :returns: start date or None if the time series is empty
         """
         if len(self) == 0: 
             return None
@@ -218,7 +220,9 @@ class Timeseries():
     @property
     def end(self) -> datetime.datetime:
         """
-        :returns: the time series end date or None if the time series is empty
+        Returns the time series end date
+
+        :returns: end date or None if the time series is empty
         """
         if len(self) == 0: 
             return None
@@ -255,6 +259,7 @@ class Timeseries():
         Writes the timeseries to a file
 
         Supported formats:
+
         * txt (with dateformat YYYYMMddHHmmss)
         * csv (with dateformat YYYY-MM-dd HH:mm:ss and comma as separator)
         * uvf
@@ -267,9 +272,12 @@ class Timeseries():
             Supported options:
 
             * ZRX format:
+
               * "REXCHANGE": a string that is used for setting the REXCHANGE header value
+            
             * UVF format:
-              * any key-value pair can be passed and will be written as an additional header entry in the format "key: value"
+
+              * any key-value pair can be passed and will be written as an additional header entry in the format ``key: value``
         """
         filename = Path(filename)
 
@@ -470,15 +478,16 @@ class Timeseries():
         """
         Reads a timeseries from a file
 
-        supported formats:
+        Supported formats:
+
         * uvf
         * zrx
         * bin
         
+        .. note:: title is *not* read from the file
+
         :param filename: path to file to read
         :param format: optional format such as "uvf", "zrx", etc. If not provided, the file extension is used instead
-        
-        NOTE: title is *not* read from the file
         """
         filename = Path(filename)
         
@@ -681,7 +690,7 @@ class Timeseries():
         """
         Class method for reading one or more series from a WBL file
         
-        :param filename: path to WBL wile
+        :param filename: path to WBL file
         :param series: series name or list of series names to read, if no series names are passed, all series will be read
         :returns: list of Timeseries instances in the same order as the series names
         """
@@ -782,8 +791,8 @@ class Timeseries():
     @staticmethod
     def read_wel(filename: Path|str, series: str|list[str] = []) -> list[Timeseries]:
         """
-        Class method for reading one or more series from a WEL file
-        Also supports WBL files
+        Class method for reading one or more series from a WEL file.
+        Also supports WBL files.
         
         :param filename: path to WEL/WBL file
         :param series: series name or list of series names to read, if no series names are passed, all series will be read

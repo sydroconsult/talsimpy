@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 class TalsimDatabase():
     """
-    CLass for handling a Talsim 5 database
+    Class for handling a Talsim 5 database
     """
 
     def __init__(self, path: Path|str):

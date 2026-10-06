@@ -34,7 +34,7 @@ class TalsimScenario(TalsimDataset):
     """Currently active simulation id"""
 
     simulations = {}
-    """Dictionary of existing simulations {id: name, ...}"""
+    """Dictionary of existing simulations ``{id: name, ...}``"""
 
 
     def __init__(self, path: Path|str, scenario_id: int):
@@ -76,6 +76,7 @@ class TalsimScenario(TalsimDataset):
         self.sim_id = sim_id
 
         # read simulations
+        self.simulations = {}
         self._get_simulations()
 
 
@@ -269,7 +270,7 @@ class TalsimScenario(TalsimDataset):
 
     def set_parameter(self, table: str, id: int, field: str, value: int|float|str) -> None:
         """
-        Sets an arbitray value in the database
+        Sets an arbitrary value in the database
 
         :param table: name of the database table
         :param id: Id of the row

@@ -1,20 +1,24 @@
 talsimpy documentation
 ======================
 
-Python interface for Talsim datasets, databases, scenarios, simulation runs
-and time series processing.
+.. include:: ../README.md
+   :parser: myst_parser.sphinx_
+   :start-after: <!-- start-intro -->
+   :end-before: <!-- end-intro -->
 
-Install with:
+Features
+--------
 
-.. code-block:: bash
-
-   pip install talsimpy
-
-Optional extras: ``pip install talsimpy[plot]`` (plotting) or ``talsimpy[raster]`` (xarray/rioxarray).
+.. include:: ../README.md
+   :parser: myst_parser.sphinx_
+   :start-after: <!-- start-features -->
+   :end-before: <!-- end-features -->
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   installation
+   quickstart
    api
 

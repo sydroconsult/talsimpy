@@ -86,17 +86,20 @@ class TalsimDataset():
         """
         Processes template files in a Talsim dataset by replacing the appropriate parameter values
 
-        NOTES:
+        Notes:
+            * Template files must be named like the original file but with an additional
+              extension ``.template``, e.g. ``dataset.ALL.template``, and will replace the
+              original file after variable substitution.
+            * Template files must contain placeholders for variables enclosed with curly
+              braces, e.g. ``{variable_name}``
+            * Standard Python `format specifiers <https://docs.python.org/3/library/string.html#format-specification-mini-language>`_
+              (e.g. ``{variable_name:formatspec}``) are allowed but behave slightly
+              differently than the default:
 
-        * Template files must be named like the original file but with an additional extension "template", e.g. "dataset.ALL.template" 
-          and will replace the original file after variable substitution.
-        * Template files must contain placeholders for variables enclosed with curly braces, e.g. {variable_name}
-        * Standard Python string format specifiers (e.g. {variable_name:formatspec}) are allowed https://docs.python.org/3/library/string.html#format-specification-mini-language
-          but behave slightly differently than the default:
-          * floats: the given precision may be automatically reduced in order to fit the specified length
-          * strings: strings may be cut to the specified length if too long
-        
-        :param variables: dict of variable names and values {name: value, ...}
+              * floats: the given precision may be automatically reduced in order to fit the specified length
+              * strings: strings may be cut to the specified length if too long
+
+        :param variables: dict of variable names and values ``{name: value, ...}``
         """
 
         logger.info(f"Processing templates in {self.path} ...")

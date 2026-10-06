@@ -9,9 +9,11 @@ API Reference
 
 .. autoclass:: talsimpy.TalsimScenario
    :members:
+   :show-inheritance:
 
 .. autoclass:: talsimpy.TalsimEngine
    :members:
 
 .. autoclass:: talsimpy.Timeseries
    :members:
+   :undoc-members:

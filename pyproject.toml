@@ -29,7 +29,7 @@ raster = ["xarray", "rioxarray"]
 
 [dependency-groups]
 test = ["pytest"]
-docs = ["sphinx"]
+docs = ["sphinx", "myst-parser"]
 
 [project.urls]
 Homepage = "https://github.com/sydroconsult/talsimpy"
