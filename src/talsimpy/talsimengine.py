@@ -199,7 +199,7 @@ class TalsimEngine:
                 #TODO: cannot deal with run file paths containing hyphens due to a bug in the Talsim engine (see #457).
                 raise Exception(f"Run file path {runfile} contains a hyphen, which is currently not supported by Talsim engine (see #457)!")
 
-        logger.info(f"Launching Talsim-NG v{self.version}...")
+        logger.info(f"Launching Talsim.Engine v{self.version}...")
         
         args = [self.exe_file.name, runfile]
         logger.debug(f"Running command: {' '.join(map(str, args))} in {self.path.absolute()}")
@@ -261,7 +261,7 @@ class TalsimEngine:
             f.write(f"Language={language}\n")
 
         # run talsim
-        logger.info(f"Launching Talsim-NG v{self.version}...")
+        logger.info(f"Launching Talsim.Engine v{self.version}...")
 
         args = [self.exe_file.resolve(), runfile.name, "-ktrcheck"]
         proc = subprocess.Popen(args, cwd=self.path.resolve())
