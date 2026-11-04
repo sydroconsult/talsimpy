@@ -30,3 +30,8 @@ def talsim_dataset_copy(tmp_path):
     dest = tmp_path / "dataset"
     shutil.copytree(TALSIM_DATASET_DIR, dest)
     return dest, TALSIM_DATASET_NAME
+
+TEST_DATA_DIR = Path(__file__).parent / "data"
+@pytest.fixture
+def wel_path():
+    return TEST_DATA_DIR / "test.KTR.WEL"

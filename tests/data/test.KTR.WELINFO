@@ -1,0 +1,27 @@
+*WELINFO
+[SETTINGS]
+SysVarId=         0
+SimId=         0
+Titel=test
+Kommentar1=
+Kommentar2=
+VersionDatumBenutzer=01.01.2020 00:00:00
+System=
+SystemVariante=
+DatumVon=01.01.2020 00:00
+DatumBis=02.01.2020 00:00
+ZREDatumVon=01.01.2020 00:00
+ZREDatumbis=02.01.2020 00:00
+ZeitschrittMinute=   60
+AnzahlZeitSchritte=        25
+Datentyp=    2
+AnzahlElemente=         5
+[THEMA]
+Kennung=KTR
+Beschreibung=Rules&Controls
+[Elemente]
+TA01_001;VOL;Volumen_1;Tsd.m3;     0
+EA01_002;1AB;Tageszähler;m3/s;     1
+UA01_003;1ZU;Zufluss_1;m3/s;     2
+KA01_004;GRP;Gruppe_1;-;     3
+KA01_005;GRP;Gruppe 2 (Ja/Nein);-;     4

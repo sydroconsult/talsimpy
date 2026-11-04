@@ -4,8 +4,11 @@ import math
 import numpy as np
 import pandas as pd
 import pytest
+import shutil
+import struct
 
 from talsimpy import Timeseries
+from talsimpy.timeseries import WelInfo
 
 
 def make_ts(title="test"):
@@ -180,3 +183,56 @@ def test_write_and_read_file_roundtrip(tmp_path, suffix):
 
     assert ts_read.dates == ts.dates
     assert ts_read.values == pytest.approx(ts.values)
+
+WEL_NAMES = ["TA01_001", "EA01_002", "UA01_003", "KA01_004", "KA01_005"]
+WEL_UNITS = ["Tsd.m3", "m3/s", "m3/s", "-", "-"]
+
+def test_welinfo_names_and_units_derived_from_columns():
+    info = WelInfo(datatype=3, columns=[["A", "x", "y", "mm", "0"], ["B", "x", "y", "m3/s", "1"]])
+    assert info.names == ["A", "B"]
+    assert info.units == ["mm", "m3/s"]
+
+def test_welinfo_default_columns_are_empty():
+    info = WelInfo(datatype=2)
+    assert info.columns == []
+    assert info.names == []
+
+def test_read_welinfo_returns_welinfo(wel_path):
+    info = Timeseries.read_welinfo(wel_path)
+    assert isinstance(info, WelInfo)
+    assert info.datatype == 2
+    assert info.names == WEL_NAMES
+    assert info.units == WEL_UNITS
+    assert info.columns[1][2] == "Tageszähler"
+
+def test_read_welinfo_missing_file_raises(tmp_path):
+    with pytest.raises(Exception, match="WELINFO"):
+        Timeseries.read_welinfo(tmp_path / "missing.WEL")
+
+
+def test_welinfo_matches_wel_header(wel_path):
+    info = Timeseries.read_welinfo(wel_path)
+    ts_list = Timeseries.read_wel(wel_path)
+    assert [ts.title for ts in ts_list] == info.names
+    assert [ts.unit for ts in ts_list] == info.units
+
+
+def test_read_wbl_selected_series(tmp_path, wel_path):
+    # build a WBL file (datatype 2 = single) from the values of the WEL file
+    expected = Timeseries.read_wel(wel_path)
+    shutil.copy(wel_path.with_suffix(".WELINFO"), tmp_path / "test.KTR.WELINFO")
+    wbl_path = tmp_path / "test.KTR.wbl"
+    with open(wbl_path, "wb") as f:
+        f.write(bytes(8 + 4 * len(expected)))  # header
+        for i, date in enumerate(expected[0].dates):
+            f.write(struct.pack("d", Timeseries._date_to_double(date)))
+            for ts in expected:
+                f.write(struct.pack("f", ts.values[i]))
+
+    result = Timeseries.read_wbl(wbl_path, ["KA01_004", "UA01_003"])
+
+    assert [ts.title for ts in result] == ["KA01_004", "UA01_003"]
+    assert result[0].dates == expected[3].dates
+    assert result[0].values == pytest.approx(expected[3].values)
+    # -9999.999 is converted to NaN by read_wbl
+    assert math.isnan(result[1].values[5])
