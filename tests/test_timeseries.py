@@ -7,9 +7,7 @@ import pytest
 import shutil
 import struct
 
-from talsimpy import Timeseries
-from talsimpy.timeseries import WelInfo
-
+from talsimpy import Timeseries, WelInfo, WelInfoEntry
 
 def make_ts(title="test"):
     ts = Timeseries(title)
@@ -188,13 +186,16 @@ WEL_NAMES = ["TA01_001", "EA01_002", "UA01_003", "KA01_004", "KA01_005"]
 WEL_UNITS = ["Tsd.m3", "m3/s", "m3/s", "-", "-"]
 
 def test_welinfo_names_and_units_derived_from_columns():
-    info = WelInfo(datatype=3, columns=[["A", "x", "y", "mm", "0"], ["B", "x", "y", "m3/s", "1"]])
+    info = WelInfo(datatype=3, entries=[
+        WelInfoEntry("A", "x", "y", "mm", 0), 
+        WelInfoEntry("B", "x", "y", "m3/s", 1)
+    ])
     assert info.names == ["A", "B"]
     assert info.units == ["mm", "m3/s"]
 
 def test_welinfo_default_columns_are_empty():
     info = WelInfo(datatype=2)
-    assert info.columns == []
+    assert info.entries == []
     assert info.names == []
 
 def test_read_welinfo_returns_welinfo(wel_path):
@@ -203,7 +204,7 @@ def test_read_welinfo_returns_welinfo(wel_path):
     assert info.datatype == 2
     assert info.names == WEL_NAMES
     assert info.units == WEL_UNITS
-    assert info.columns[1][2] == "Tageszähler"
+    assert info.entries[1].element == "Tageszähler"
 
 def test_read_welinfo_missing_file_raises(tmp_path):
     with pytest.raises(Exception, match="WELINFO"):

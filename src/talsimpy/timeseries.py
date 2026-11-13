@@ -15,34 +15,13 @@ from pathlib import Path
 import struct
 import sys
 import xml.etree.ElementTree as ET
-from dataclasses import dataclass, field
 
 import numpy as np
 import pandas as pd
 
+from .welinfo import WelInfo, WelInfoEntry
+
 logger = logging.getLogger(__name__)
-
-@dataclass
-class WelInfo:
-    """
-    Information read from a WELINFO file
-
-    Attributes:
-        datatype (int): datatype of the values in the WBL file (1: integer, 2: single, 3: double, 4: boolean)
-        columns (list[list[str]]): column definitions, e.g. ["A000_1ZU", "Inflow", "R127C66", "m3/s", "0"]
-    """
-    datatype: int
-    columns: list[list[str]] = field(default_factory=list)
-
-    @property
-    def names(self) -> list[str]:
-        """series names"""
-        return [col[0] for col in self.columns]
-
-    @property
-    def units(self) -> list[str]:
-        """series units"""
-        return [col[3] for col in self.columns]
 
 class Timeseries():
     """
@@ -723,11 +702,10 @@ class Timeseries():
         filename = Path(filename)
 
         welinfo = Timeseries.read_welinfo(filename)
-        if len(welinfo.columns) == 0:
+        if len(welinfo.entries) == 0:
             raise Exception("Unable to read series information from WELINFO file!")
 
         datatype = welinfo.datatype
-        columns = welinfo.columns
 
         if datatype == 1:
             datalength = 4 # integer
@@ -764,7 +742,7 @@ class Timeseries():
 
         with open(filename, "rb") as f:
             # skip header (same length as a single record consisting of 8 bytes date and x bytes for each value depending on the data type
-            f.read(8 + datalength * len(columns))
+            f.read(8 + datalength * len(welinfo.entries))
             # read records
             while True:
                 # read date as double
@@ -811,9 +789,10 @@ class Timeseries():
                     position = index + 1
 
                 # skip ahead to next timestamp
-                f.read(datalength * (len(columns) - position))
+                f.read(datalength * (len(welinfo.entries) - position))
 
         return [ts_dict[seriesname] for seriesname in series]
+
 
     @staticmethod
     def read_wel(filename: Path|str, series: str|list[str] = []) -> list[Timeseries]:
@@ -895,13 +874,14 @@ class Timeseries():
         # return list of timeseries in order of passed series names
         return [ts_dict[idx] for idx in indices_to_import]
 
+
     @staticmethod
     def read_welinfo(filename: Path|str) -> WelInfo:
         """
             Class method for reading the WELINFO file that accompanies a WEL file.
             Returns a list with the series names in the WEL file.
             :param filename: path to WELINFO file
-            :returns: WelInfo instance containing the column definitions and datatype
+            :returns: WelInfo instance containing the datatype and list of WelInfoEntry
         """
         filename = Path(filename)
         file_welinfo = filename.with_suffix(".WELINFO")
@@ -909,7 +889,7 @@ class Timeseries():
             raise Exception(f"Required WELINFO file not found: {file_welinfo}")
 
         # read WELINFO
-        columns = [] 
+        entries = [] 
         with open(file_welinfo, "r", encoding="cp1252") as f:
 
             isdata = False
@@ -931,9 +911,10 @@ class Timeseries():
                     A000_NEF;Eff_Rainfall;R127C66;mm;     2
                     A000_TEM;Airtemperature;R127C66;oC;     3
                     """
-                    columns.append(line.strip().split(";"))
+                    entries.append(WelInfoEntry(*line.strip().split(";")))
 
-        return WelInfo(datatype=datatype, columns=columns)
+        return WelInfo(datatype=datatype, entries=entries)
+
 
     @staticmethod
     def read_wel_to_dataframe(filename: Path|str, series: str|list[str] = []) -> pd.DataFrame:
