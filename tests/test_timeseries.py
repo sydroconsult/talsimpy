@@ -7,9 +7,7 @@ import pytest
 import shutil
 import struct
 
-from talsimpy import Timeseries
-from talsimpy.timeseries import WelInfo, WelInfoEntry
-
+from talsimpy import Timeseries, WelInfo, WelInfoEntry
 
 def make_ts(title="test"):
     ts = Timeseries(title)
