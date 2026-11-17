@@ -1,4 +1,5 @@
 # talsimpy
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/talsimpy)](https://pypi.org/project/talsimpy/)
  <!-- start-intro -->
 Python interface for Talsim datasets, databases, scenarios, simulation runs and time series processing.
 <!-- end-intro -->
@@ -12,6 +13,8 @@ pip install talsimpy
 ```
 
 Optional extras: `pip install talsimpy[plot]` (plotting) or `talsimpy[raster]` (xarray/rioxarray).
+
+Requires Python 3.9 or newer. talsimpy is tested on Python 3.9 – 3.15.
 <!-- end-install -->
 
 ## Features
