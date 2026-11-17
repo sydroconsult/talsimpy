@@ -22,3 +22,4 @@ from .talsimdataset import TalsimDataset
 from .talsimscenario import TalsimScenario
 from .talsimengine import TalsimEngine
 from .timeseries import Timeseries
+from .welinfo import WelInfo, WelInfoEntry
