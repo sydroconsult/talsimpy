@@ -44,6 +44,9 @@ Homepage = "https://github.com/sydroconsult/talsimpy"
 Documentation = "https://sydroconsult.github.io/talsimpy/"
 Changelog = "https://github.com/sydroconsult/talsimpy/blob/main/CHANGELOG.md"
 
+[tool.uv]
+exclude-newer = "7 days"
+
 [tool.hatch.version]
 path = "src/talsimpy/__init__.py"
 
