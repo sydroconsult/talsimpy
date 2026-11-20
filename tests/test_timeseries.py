@@ -6,8 +6,30 @@ import pandas as pd
 import pytest
 import shutil
 import struct
+from pathlib import Path
 
 from talsimpy import Timeseries, WelInfo, WelInfoEntry
+
+
+
+TEST_DATA_DIR = Path(__file__).parent / "data"
+
+def test_read_uvf_ansi_encoded():
+    ts = Timeseries.read_file(TEST_DATA_DIR / "test_ansi.uvf")
+    assert ts.title.strip() == "Qpeg"
+    assert ts.unit.strip() == "m³/s"
+    assert len(ts) == 14
+    assert ts.start == datetime.datetime(2000, 11, 1, 0, 0)
+    assert ts.end == datetime.datetime(2000, 11, 1, 3, 15)
+    assert ts.values[0] == pytest.approx(0.121)
+
+def test_read_uvf_utf8_encoded(tmp_path):
+    src = TEST_DATA_DIR / "test_ansi.uvf"
+    dest = tmp_path / "test_utf8.uvf"
+    dest.write_bytes(src.read_bytes().decode("cp1252").encode("utf-8"))
+    ts = Timeseries.read_file(dest)
+    assert ts.unit.strip() == "m³/s"
+    assert len(ts) == 14
 
 def make_ts(title="test"):
     ts = Timeseries(title)

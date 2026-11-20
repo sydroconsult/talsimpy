@@ -534,8 +534,14 @@ class Timeseries():
         
         ts = Timeseries()
         
-        f = open(filename, "r")
-        for line in f:
+        try:
+            with open(filename, "r", encoding="utf-8") as f:
+                lines = f.readlines()
+        except UnicodeDecodeError:
+            with open(filename, "r", encoding="latin1") as f:
+                lines = f.readlines()
+        
+        for line in lines:
 
             i_line += 1
 
@@ -595,7 +601,6 @@ class Timeseries():
                     
                     # store data
                     ts.add_node(date, value)
-        f.close()
         
         return ts
         
