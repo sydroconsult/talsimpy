@@ -201,9 +201,9 @@ class TalsimEngine:
 
         logger.info(f"Launching Talsim.Engine v{self.version}...")
         
-        args = [self.exe_file.name, runfile]
+        args = [str(self.exe_file.absolute()), str(runfile)]
         logger.debug(f"Running command: {' '.join(map(str, args))} in {self.path.absolute()}")
-        proc = subprocess.Popen(args, cwd=self.path.absolute(), shell=True)
+        proc = subprocess.Popen(args, cwd=self.path.absolute())
         retcode = proc.wait()
 
         return retcode
@@ -263,7 +263,7 @@ class TalsimEngine:
         # run talsim
         logger.info(f"Launching Talsim.Engine v{self.version}...")
 
-        args = [self.exe_file.resolve(), runfile.name, "-ktrcheck"]
+        args = [str(self.exe_file.resolve()), runfile.name, "-ktrcheck"]
         proc = subprocess.Popen(args, cwd=self.path.resolve())
         retcode = proc.wait()
 
