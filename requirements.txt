@@ -21,7 +21,7 @@ pandas==2.3.3 ; python_full_version < '3.11'
     # via talsimpy
 pandas==3.0.5 ; python_full_version >= '3.11'
     # via talsimpy
-python-dateutil==2.9.0.post0
+python-dateutil==3.0.0
     # via pandas
 pytz==2026.3.post1 ; python_full_version < '3.11'
     # via pandas
