@@ -55,3 +55,4 @@ packages = ["src/talsimpy"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = ["engine: tests that require a local Talsim engine (Windows)"]
